@@ -33,5 +33,19 @@ describe 'As a user' do
       end
     end
 
+    describe 'I see the average rating for the book' do
+      it 'shows the average' do
+        book = Book.create!(title: "Great Gatsby")
+        user_1 = User.create!(name: "Jake")
+        user_2 = User.create!(name: "Mike")
+        user_3 = User.create!(name: "Laura")
+        review_1 = book.reviews.create!(user_rating: 3, body: "I liked this well enough", user_id: user_1.id)
+        review_2 = book.reviews.create!(user_rating: 4, body: "Needs more Fergie", user_id: user_2.id)
+        review_3 = book.reviews.create!(user_rating: 5, body: "Beautiful", user_id: user_3.id)
+
+        visit book_path(book)
+
+        expect(page).to have_content("Average rating: 4")
+
   end
 end
