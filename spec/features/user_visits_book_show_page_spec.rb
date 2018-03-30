@@ -15,9 +15,9 @@ describe 'As a user' do
         user_1 = User.create!(name: "Jake")
         user_2 = User.create!(name: "Mike")
         user_3 = User.create!(name: "Laura")
-        review_1 = Review.create!(user_rating: 4, body: "I liked this well enough", user_id: user_1.id)
-        review_2 = Review.create!(user_rating: 3, body: "Needs more Fergie", user_id: user_2.id)
-        review_3 = Review.create!(user_rating: 4, body: "Beautiful", user_id: user_3.id))
+        review_1 = book.reviews.create!(user_rating: 4, body: "I liked this well enough", user_id: user_1.id)
+        review_2 = book.reviews.create!(user_rating: 3, body: "Needs more Fergie", user_id: user_2.id)
+        review_3 = book.reviews.create!(user_rating: 4, body: "Beautiful", user_id: user_3.id)
         visit book_path(book)
 
         expect(page).to have_content(user_1.name)
